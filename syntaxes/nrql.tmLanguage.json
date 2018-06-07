@@ -1,0 +1,59 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "New Relic Query Language",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#operators"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#aggregators"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.nrql",
+				"match": "(?i)\\b(select|from|where|as|facet|limit|since|until|with|timezone|compare|timeseries)\\b"
+			}]
+		},
+		"operators": {
+			"patterns": [{
+				"name": "keyword.operator.nrql",
+				"match": "(?i)\\b(=|!=|<|<=|>|>=|and|or|is null|is not null|in|not in|like|not like|\\+|-|\\/|\\*)\\b"
+			}]
+		},
+		"numbers": {
+			"patterns": [{
+				"name": "constant.numeric.nrql",
+				"match": "\\d"	
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.nrql",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.nrql",
+					"match": "\\\\."
+				}
+			]
+		},
+		"aggregators": {
+			"patterns": [{
+				"name": "entity.name.function.nrql",
+				"match": "(?i)(apdex|average|count|eventType|filter|funnel|histogram|keyset|latest|max|min|percentage|percentile|rate|stddev|sum|uniqueCount|uniques)"
+			}]
+		}
+	},
+	"scopeName": "source.nrql"
+}
